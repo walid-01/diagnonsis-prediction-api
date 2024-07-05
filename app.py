@@ -9,16 +9,12 @@ model = joblib.load("random_forest_model.joblib")
 
 # Define a function to preprocess the input data
 def preprocess_data(data):
-    # age = int(data['age'])
-    # sexe = 1 if data['sexe'] == 'm' else 0
-    # douleur_map = {'legere': 1, 'moderee': 2, 'intense': 3}
     douleur = int(data['douleur'])
     gonflement = int(data['gonflement'])
     rougeur = int(data['rougeur'])
     pus = int(data['pus'])
     fivre = int(data['fivre'])
     ganglions = int(data['ganglions'])
-    # sensibilite = 1 if data['sensibilite'] == 'positive' else 0
     
     return np.array([douleur, gonflement, rougeur, pus, fivre, ganglions]).reshape(1, -1)
 
