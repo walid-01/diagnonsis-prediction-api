@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import joblib
 import numpy as np
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
 
 # Load the model
 model = joblib.load("random_forest_model.joblib")
@@ -26,7 +28,6 @@ def predict():
 
     # Make prediction
     prediction = model.predict(features)
-    print(prediction)
     result = {'prediction': prediction[0]}
 
     return jsonify(result)
